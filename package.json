@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "server": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/osamahafez/school-admin-panel/issues"
   },
-  "homepage": "https://github.com/osamahafez/school-admin-panel#readme"
+  "homepage": "https://github.com/osamahafez/school-admin-panel#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.9",
+    "validator": "^11.1.0"
+  }
 }
