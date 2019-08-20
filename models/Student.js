@@ -8,7 +8,7 @@ const studentSchema = new Schema({
         required: true
     },
     
-    birthday: {
+    birth_date: {
         type: Date
     },
     
