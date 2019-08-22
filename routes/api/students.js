@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router()
-
 const Student = require('../../models/Student');
 const validateStudentInputs = require('../../validation/students');
+const passport = require('passport');
 
 /*
 @route: /api/students/create
 @description: create a new student
 @access: private
 */
-router.post('/create', (req, res) => {
+router.post('/create', passport.authenticate('jwt', {session: false}), (req, res) => {
 
     const { errors, errorsFound } = validateStudentInputs(req.body);
 

@@ -20,6 +20,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+const passport = require('passport');
+// passport middleware
+app.use(passport.initialize());
+//passport config
+require('./config/passport')(passport);
+
 // routes
 app.use('/api/admins', admins);
 app.use('/api/students', students);
