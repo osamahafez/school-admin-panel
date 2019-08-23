@@ -27,9 +27,21 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
     
     const student = new Student(studentData);
     student.save()
-        .then(() => res.status(200).json(student))
+        .then(() => res.status(201).json(student))
         .catch(err => res.status(400).json(err));
         
+});
+
+/*
+@route: /api/students/:student_id
+@description: find student by id
+@access: private
+*/
+router.get('/:student_id'. passport.authenticate('jwt', {session:false}), (req, res) => {
+
+    Student.findById(req.params.student_id)
+        .then(result => res.status(200).json(result))
+        .catch(() => res.status(404).json({notFound: 'Student doesn\'t exist'}));
 });
 
 
