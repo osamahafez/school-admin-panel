@@ -9,7 +9,8 @@ const studentSchema = new Schema({
     },
     
     birth_date: {
-        type: Date
+        type: Date,
+        required: true
     },
     
     location: {
