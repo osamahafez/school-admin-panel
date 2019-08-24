@@ -47,8 +47,10 @@ const validateStudentInputs = (data) => {
     }
 
     // parent email validation
-    if(!validator.isEmail(data.parent_info.email)) {
-        errors.parent_info_email = 'Email Address Is Not Valid';
+    if(data.parent_info.email !== undefined) {
+        if(!validator.isEmail(data.parent_info.email)) {
+            errors.parent_info_email = 'Email Address Is Not Valid';
+        }
     }
 
     return {
