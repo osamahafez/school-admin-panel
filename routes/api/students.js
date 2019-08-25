@@ -37,7 +37,7 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
 /*
 @req: post
 @route: /api/students/search
-@description: search form
+@description: search form for students
 @access: private
 */
 router.post('/search', passport.authenticate('jwt', {session:false}), (req, res) => {
@@ -63,6 +63,38 @@ router.get('/:student_id', passport.authenticate('jwt', {session:false}), (req, 
     Student.findById(req.params.student_id)
         .then(result => res.status(200).json(result))
         .catch(() => res.status(404).json({notFound: 'Student doesn\'t exist'}));
+});
+
+/*
+@req: put
+@route: /api/students/:student_id
+@description: update student by id
+@access: private
+*/
+router.put('/:student_id', passport.authenticate('jwt', {session: false}), (req, res) => {
+
+    const { errors, errorsFound } = validateStudentInputs(req.body);
+
+    if(errorsFound) {
+        return res.status(400).json(errors);
+    }
+    
+    const studentData = {};
+    studentData.full_name = req.body.full_name;
+    studentData.birth_date = req.body.birth_date;
+    studentData.location = req.body.location;
+    studentData.stage = req.body.stage;
+    studentData.level = req.body.level;
+    studentData.parent_info = req.body.parent_info;
+
+
+    Student.findOneAndUpdate({_id: req.params.student_id}, {$set: studentData}, {new: true, useFindAndModify: false})
+        .then(result => {
+            if(result) {return res.status(200).json(result);}
+            else {return res.status(404).json({notFound: 'Student not found'});}
+        })
+        .catch(err => res.status(400).json(err));
+        
 });
 
 /*
