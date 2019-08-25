@@ -3,7 +3,7 @@ const router = express.Router()
 const Student = require('../../models/Student');
 const validateStudentInputs = require('../../validation/students');
 const passport = require('passport');
-// const IsEmpty = require('../../validation/IsEmpty');
+const FilterSearch = require('../../validation/FilterSearch');
 
 /*
 @req: post
@@ -35,6 +35,25 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
 });
 
 /*
+@req: post
+@route: /api/students/search
+@description: search form
+@access: private
+*/
+router.post('/search', passport.authenticate('jwt', {session:false}), (req, res) => {
+    
+    const filteredSearchInput = FilterSearch(req.body);
+    console.log(filteredSearchInput);
+
+    Student.find(filteredSearchInput)
+        .then(result => {
+            if(result.length > 0) {return res.status(200).json(result)}
+            else {return res.status(404).json({notFound: 'couldn\'t find any students'})}
+        })
+        .catch(() => res.status(404).json({notFound: 'couldn\'t find any students'}));
+});
+
+/*
 @req: get
 @route: /api/students/:student_id
 @description: find student by id
@@ -45,7 +64,6 @@ router.get('/:student_id', passport.authenticate('jwt', {session:false}), (req, 
         .then(result => res.status(200).json(result))
         .catch(() => res.status(404).json({notFound: 'Student doesn\'t exist'}));
 });
-
 
 /*
 @req: delete
