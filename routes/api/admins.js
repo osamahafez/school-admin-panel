@@ -28,8 +28,7 @@ router.post('/login', (req, res) => {
                         id: result._id,
                         full_name: result.full_name,
                         national_id: result.national_id,
-                        username: result.username,
-                        password: result.password
+                        username: result.username
                     }
                     
                     jwt.sign(payload, keys.JWTSecret, {expiresIn: '12h'}, (err, token) => {
