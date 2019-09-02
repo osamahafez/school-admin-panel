@@ -43,7 +43,6 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
 router.post('/search', passport.authenticate('jwt', {session:false}), (req, res) => {
     
     const filteredSearchInput = FilterSearch(req.body);
-    console.log(filteredSearchInput);
 
     Student.find(filteredSearchInput)
         .then(result => {

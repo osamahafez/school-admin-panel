@@ -19,8 +19,22 @@ const validateStudentInputs = (data) => {
     }
 
     // birth date validation
+    if(validator.isEmpty(data.full_name)) {
+        errors.birth_date = 'Enter Student\'s Birth Date';
+    }
+
     if(validator.isAfter(data.birth_date, `${new Date().getMonth()}/${new Date().getDate()}/${new Date().getFullYear()}` )) {
         errors.birth_date = 'Birth date is not valid';
+    }
+
+    // student stage validation
+    if(validator.isEmpty(data.stage)) {
+        errors.stage = 'Select Student\'s Stage';
+    }
+
+    // student level validation
+    if(validator.isEmpty(data.level)) {
+        errors.level = 'Select Student\'s Level';
     }
 
     // parent name validation
