@@ -8,6 +8,8 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/common/PrivateRoute';
 import AdminLogin from './components/AdminLogin/AdminLogin'
 import Dashboard from './components/Dashboard/Dashboard';
+import Students from './components/Students/Students';
+import AddStudent from './components/AddStudent/AddStudent';
 import { logoutAdmin } from './actions/adminActions';
 
 
@@ -37,6 +39,12 @@ function App() {
            <Route exact path='/' component={AdminLogin} />
            <Switch>
                 <PrivateRoute exact path={'/dashboard'} component={Dashboard} />
+           </Switch>
+           <Switch>
+                <PrivateRoute exact path={'/students'} component={Students} />
+           </Switch>
+           <Switch>
+                <PrivateRoute exact path={'/add-student'} component={AddStudent} />
            </Switch>
         </div>
     );
