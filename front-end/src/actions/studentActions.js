@@ -43,6 +43,19 @@ export const createStudent = (studentData, history) => (dispatch) => {
         });
 };
 
+export const deleteStudent = (student_id, student_stage) => dispatch => {
+    axios.delete(`/api/students/${student_id}`)
+        .then(() => {
+            dispatch(getStudents({stage: student_stage}));
+        })
+        .catch(err => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+        });
+}
+
 export const setLoading = () => {
     return {
         type: SET_LOADING

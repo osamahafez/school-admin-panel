@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import SidebarTemplate from '../common/SidebarTemplate/SidebarTemplate';
 import Spinner from '../common/Spinner';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getStudents, setMessage } from '../../actions/studentActions';
+import { getStudents, setMessage, deleteStudent } from '../../actions/studentActions';
 
 class Students extends Component {
 
@@ -41,6 +42,13 @@ class Students extends Component {
         this.props.history.push('/add-student');
     }
 
+    onDeleteStudent = (student_id, student_stage) => {
+        if(window.confirm('Are You Sure ?')) {
+            this.props.deleteStudent(student_id, student_stage);
+            // this.props.getStudents({stage: student_stage});
+        }
+    }
+
     render() {
 
         const { students, loading } = this.props.student;
@@ -61,7 +69,7 @@ class Students extends Component {
                         <td>{student.level}</td>
                         <td>
                             <button className='btn btn-success btn-sm mr-1'>Update</button>
-                            <button className='btn btn-danger btn-sm'>Delete</button>
+                            <button className='btn btn-danger btn-sm' onClick={() => this.onDeleteStudent(student._id, student.stage)}>Delete</button>
                         </td>
                     </tr>
                 );
@@ -114,9 +122,17 @@ class Students extends Component {
     }
 }
 
+Students.propTypes = {
+    student: PropTypes.object.isRequired,
+    message: PropTypes.object.isRequired,
+    getStudents: PropTypes.func.isRequired,
+    setMessage: PropTypes.func.isRequired,
+    deleteStudent: PropTypes.func.isRequired,
+}
+
 const mapStateToProps = (state) => ({
     student: state.student,
     message: state.message
 })
 
-export default connect(mapStateToProps, { getStudents, setMessage })(Students);
+export default connect(mapStateToProps, { getStudents, setMessage, deleteStudent })(Students);
