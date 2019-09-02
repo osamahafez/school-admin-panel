@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { SET_LOADING, GET_STUDENTS, GET_ERRORS } from './types';
+import {
+    SET_LOADING,
+    GET_STUDENTS,
+    GET_ERRORS,
+    SET_MESSAGE
+} from './types';
 
 export const getStudents = (searchData) => (dispatch) => {
     dispatch(setLoading());
@@ -23,6 +28,11 @@ export const createStudent = (studentData, history) => (dispatch) => {
     axios
         .post('/api/students/create', studentData)
         .then(() => {
+            const msg = {
+                content: 'Student Created Successfully',
+                type: 'success'
+            }
+            dispatch(setMessage(msg));
             history.push('/students');
         })
         .catch((err) => {
@@ -36,5 +46,12 @@ export const createStudent = (studentData, history) => (dispatch) => {
 export const setLoading = () => {
     return {
         type: SET_LOADING
+    };
+};
+
+export const setMessage = (msg) => {
+    return {
+        type: SET_MESSAGE,
+        payload: msg
     };
 };

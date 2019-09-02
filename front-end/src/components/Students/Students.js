@@ -2,15 +2,32 @@ import React, { Component } from 'react'
 import SidebarTemplate from '../common/SidebarTemplate/SidebarTemplate';
 import Spinner from '../common/Spinner';
 import { connect } from 'react-redux';
-import { getStudents } from '../../actions/studentActions';
+import { getStudents, setMessage } from '../../actions/studentActions';
 
 class Students extends Component {
+
+    state = {
+        feedback_msg: null
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if(props.message.msg) {
+            return {
+                feedback_msg: props.message.msg
+            }
+        }
+        return null;
+    }
 
     componentDidMount() {
         const searchData = {
             stage: 'primary'
         }
         this.props.getStudents(searchData);
+    }
+
+    componentWillUnmount() {
+        this.props.setMessage(null);
     }
 
     searchStudent = (stage) => {
@@ -69,6 +86,18 @@ class Students extends Component {
 
         return (
             <SidebarTemplate>
+
+                {/* Start Success Message */}
+                {(this.state.feedback_msg) ? 
+                    <div className={`alert alert-${this.state.feedback_msg.type} alert-dismissible fade show mt-3`} role="alert">
+                        <strong>{this.state.feedback_msg.content}</strong>
+                        <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                  : null}
+                {/* End Success Message */}
+
                 <button className='btn btn-primary float-right mt-2' onClick={this.addStudent}><i className='fas fa-plus'></i> Add New Student</button> <br/> <br/>
                 <div className='text-center mt-3'>
                     <div className="btn-group" role="group">
@@ -86,7 +115,8 @@ class Students extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    student: state.student
+    student: state.student,
+    message: state.message
 })
 
-export default connect(mapStateToProps, { getStudents })(Students);
+export default connect(mapStateToProps, { getStudents, setMessage })(Students);
