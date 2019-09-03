@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SidebarTemplate from '../common/SidebarTemplate/SidebarTemplate';
 import classnames from 'classnames';
 import { connect } from 'react-redux'; 
-import { createStudent } from '../../actions/studentActions';
+import { createStudent, clearErrors } from '../../actions/studentActions';
 
 class AddStudent extends Component {
     state = {
@@ -18,6 +18,10 @@ class AddStudent extends Component {
         primaryCheck: true,
         errors: {}
     };
+
+    componentWillUnmount() {
+        this.props.clearErrors();
+    }
 
     static getDerivedStateFromProps(props, state) {
         if(props.errors) {
@@ -266,4 +270,4 @@ const mapStateToProps = (state) => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { createStudent })(AddStudent);
+export default connect(mapStateToProps, { createStudent, clearErrors })(AddStudent);
