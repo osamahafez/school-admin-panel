@@ -10,6 +10,7 @@ import AdminLogin from './components/AdminLogin/AdminLogin'
 import Dashboard from './components/Dashboard/Dashboard';
 import Students from './components/Students/Students';
 import AddStudent from './components/AddStudent/AddStudent';
+import UpdateStudent from './components/UpdateStudent/UpdateStudent';
 import { logoutAdmin } from './actions/adminActions';
 
 
@@ -45,6 +46,9 @@ function App() {
            </Switch>
            <Switch>
                 <PrivateRoute exact path={'/add-student'} component={AddStudent} />
+           </Switch>
+           <Switch>
+                <PrivateRoute exact path={'/update-student/:student_id'} component={UpdateStudent} />
            </Switch>
         </div>
     );

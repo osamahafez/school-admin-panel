@@ -42,6 +42,10 @@ class Students extends Component {
         this.props.history.push('/add-student');
     }
 
+    onUpdateStudent = (student_id) => {
+        this.props.history.push(`update-student/${student_id}`);
+    }
+    
     onDeleteStudent = (student_id, student_stage) => {
         if(window.confirm('Are You Sure ?')) {
             this.props.deleteStudent(student_id, student_stage);
@@ -68,7 +72,7 @@ class Students extends Component {
                         <td>{student.stage}</td>
                         <td>{student.level}</td>
                         <td>
-                            <button className='btn btn-success btn-sm mr-1'>Update</button>
+                            <button className='btn btn-success btn-sm mr-1' onClick={() => this.onUpdateStudent(student._id)}>Update</button>
                             <button className='btn btn-danger btn-sm' onClick={() => this.onDeleteStudent(student._id, student.stage)}>Delete</button>
                         </td>
                     </tr>
