@@ -2,11 +2,11 @@ const validator = require('validator');
 const IsEmpty = require('./IsEmpty');
 
 const validateStudentInputs = (data) => {
-
     let errors = {};
     let errorsFound;
 
     data.full_name               = IsEmpty(data.full_name)               ? '' : data.full_name; 
+    data.birth_date              = IsEmpty(data.birth_date)              ? '' : data.birth_date; 
     data.parent_info             = IsEmpty(data.parent_info)             ? '' : data.parent_info; 
     data.parent_info.full_name   = IsEmpty(data.parent_info.full_name)   ? '' : data.parent_info.full_name; 
     data.parent_info.phone       = IsEmpty(data.parent_info.phone)       ? '' : data.parent_info.phone; 
@@ -19,7 +19,7 @@ const validateStudentInputs = (data) => {
     }
 
     // birth date validation
-    if(validator.isEmpty(data.full_name)) {
+    if(validator.isEmpty(data.birth_date)) {
         errors.birth_date = 'Enter Student\'s Birth Date';
     }
 
