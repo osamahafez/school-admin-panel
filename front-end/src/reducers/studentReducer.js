@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_STUDENTS } from '../actions/types';
+import { SET_LOADING, GET_STUDENTS, GET_STUDENT } from '../actions/types';
 
 const initialState = {
     student: null,
@@ -14,6 +14,13 @@ const studentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 students: action.payload,
+                loading: false
+            }
+
+        case GET_STUDENT:
+            return {
+                ...state,
+                student: action.payload,
                 loading: false
             }
 

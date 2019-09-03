@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     SET_LOADING,
     GET_STUDENTS,
+    GET_STUDENT,
     GET_ERRORS,
     SET_MESSAGE
 } from './types';
@@ -24,6 +25,24 @@ export const getStudents = (searchData) => (dispatch) => {
         });
 };
 
+export const getStudent = (student_id) => (dispatch) => {
+    dispatch(setLoading());
+    axios
+        .get(`/api/students/${student_id}`)
+        .then((res) => {
+            dispatch({
+                type: GET_STUDENT,
+                payload: res.data
+            });
+        })
+        .catch((err) => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+        });
+};
+
 export const createStudent = (studentData, history) => (dispatch) => {
     axios
         .post('/api/students/create', studentData)
@@ -31,7 +50,7 @@ export const createStudent = (studentData, history) => (dispatch) => {
             const msg = {
                 content: 'Student Created Successfully',
                 type: 'success'
-            }
+            };
             dispatch(setMessage(msg));
             history.push('/students');
         })
@@ -43,18 +62,38 @@ export const createStudent = (studentData, history) => (dispatch) => {
         });
 };
 
-export const deleteStudent = (student_id, student_stage) => dispatch => {
-    axios.delete(`/api/students/${student_id}`)
+export const updateStudent = (studentData, history, student_id) => dispatch => {
+    
+    axios.put(`/api/students/${student_id}`, studentData)
         .then(() => {
-            dispatch(getStudents({stage: student_stage}));
+            const msg = {
+                content: 'Student Updated Successfully',
+                type: 'success'
+            };
+            dispatch(setMessage(msg));
+            history.push('/students');
         })
-        .catch(err => {
+        .catch((err) => {
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
             });
         });
 }
+
+export const deleteStudent = (student_id, student_stage) => (dispatch) => {
+    axios
+        .delete(`/api/students/${student_id}`)
+        .then(() => {
+            dispatch(getStudents({ stage: student_stage }));
+        })
+        .catch((err) => {
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
+        });
+};
 
 export const setLoading = () => {
     return {
@@ -68,3 +107,10 @@ export const setMessage = (msg) => {
         payload: msg
     };
 };
+
+export const clearErrors = () => {
+    return {
+        type: GET_ERRORS,
+        payload: {}
+    };
+}
