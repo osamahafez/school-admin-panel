@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Students from './components/Students/Students';
 import AddStudent from './components/AddStudent/AddStudent';
 import UpdateStudent from './components/UpdateStudent/UpdateStudent';
+import Search from './components/Search/Search';
 import { logoutAdmin } from './actions/adminActions';
 
 
@@ -49,6 +50,9 @@ function App() {
            </Switch>
            <Switch>
                 <PrivateRoute exact path={'/update-student/:student_id'} component={UpdateStudent} />
+           </Switch>
+           <Switch>
+                <PrivateRoute exact path={'/search'} component={Search} />
            </Switch>
         </div>
     );
