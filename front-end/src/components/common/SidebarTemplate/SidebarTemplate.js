@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './SidebarTemplate.css';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import Avatar from '../../../images/avatar.png';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logoutAdmin } from '../../../actions/adminActions';
@@ -32,6 +33,7 @@ class SidebarTemplate extends Component {
                 {/*  Sidebar */}
                 <div className="bg-dark border-right" id="sidebar-wrapper">
                     <div className="sidebar-heading text-center text-light bg-info"> 
+                        <img src={Avatar} alt="avatar" className='rounded-circle' style={{width:'100px', height:'100px'}} />
                         <h3>{admin.full_name}</h3> 
                         <small>{admin.username}</small> 
                         <br/>
