@@ -38,9 +38,9 @@ class SidebarTemplate extends Component {
                         <small>{admin.national_id}</small> 
                     </div>
                     <div className="list-group list-group-flush">
-                        <Link to='/dashboard' className='list-group-item list-group-item-action bg-dark text-light'>Dashboard</Link>
-                        <Link to='/students' className='list-group-item list-group-item-action bg-dark text-light'>Students</Link>
-                        <Link to='/search' className='list-group-item list-group-item-action bg-dark text-light'>Search</Link>
+                        <Link to='/dashboard' className='list-group-item list-group-item-action bg-dark text-light'><i className="fas fa-tachometer-alt"></i> Dashboard</Link>
+                        <Link to='/students' className='list-group-item list-group-item-action bg-dark text-light'><i className="fas fa-users"></i> Students</Link>
+                        <Link to='/search' className='list-group-item list-group-item-action bg-dark text-light'><i className="fas fa-search"></i> Search</Link>
                     </div>
                 </div>
                 {/*  /#sidebar-wrapper */}
@@ -63,7 +63,7 @@ class SidebarTemplate extends Component {
                         </div>
                     </nav>
 
-                    <div className="container-fluid">
+                    <div className="container-fluid sidebar-template">
                         {this.props.children}
                     </div>
                 </div>
