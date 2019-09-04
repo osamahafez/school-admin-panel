@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const admins = require('./routes/api/admins');
@@ -29,6 +30,14 @@ require('./config/passport')(passport);
 // routes
 app.use('/api/admins', admins);
 app.use('/api/students', students);
+
+// used in production
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('front-end/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'front-end', 'build', 'index.html'));
+  });
+}
 
 // opening port
 const port = process.env.PORT || 5000
