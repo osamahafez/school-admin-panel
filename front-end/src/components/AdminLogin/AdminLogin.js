@@ -67,7 +67,7 @@ class AdminLogin extends Component {
                 <div className='container-fluid'>
                     <div className="row">
                         <div className="offset-md-3 col-md-6">
-                            <div className="display-4 text-center my-5">Admin Login</div>
+                            <h1 className="text-center my-5 login-title">Admin Login</h1>
                             <div className='login-form'>
                                 <form onSubmit={this.onSubmitHandler}>
                                     
@@ -77,7 +77,7 @@ class AdminLogin extends Component {
                                             <div className="input-group-prepend">
                                                 <div className="input-group-text"> <i className="fas fa-user fa-lg"></i> </div>
                                             </div>
-                                            <input type="text" name='username' className={classnames('form-control form-control-lg', {'is-invalid': errors.notFound})} placeholder="Username" onChange={this.onChangeHandler} />
+                                            <input type="text" name='username' className={classnames('form-control form-control-lg', {'is-invalid': errors.notFound})} placeholder="Username: admin" onChange={this.onChangeHandler} />
                                             <div className="invalid-feedback">
                                                <strong>{errors.notFound}</strong>
                                             </div>
@@ -87,16 +87,16 @@ class AdminLogin extends Component {
                                     <div className="form-group">
                                         <div className="input-group">
                                             <div className="input-group-prepend">
-                                                <div className="input-group-text"><i className="fas fa-key fa-lg"></i></div>
+                                                <div className="input-group-text"><i className="fas fa-lock fa-lg"></i></div>
                                             </div>
-                                            <input type="password" name='password' className={classnames('form-control form-control-lg', {'is-invalid': errors.passwordNotCorrect})} placeholder="Password" onChange={this.onChangeHandler} />
+                                            <input type="password" name='password' className={classnames('form-control form-control-lg', {'is-invalid': errors.passwordNotCorrect})} placeholder="Password: admin" onChange={this.onChangeHandler} />
                                             <div className="invalid-feedback">
                                                 <strong>{errors.passwordNotCorrect}</strong>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="text-center">
-                                        <button type="submit" className="btn btn-primary btn-lg">Login</button>
+                                        <button type="submit" className="button_1">Login</button>
                                     </div>
                                 </form>
                             </div>

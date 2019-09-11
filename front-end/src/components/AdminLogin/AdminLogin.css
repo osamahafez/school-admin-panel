@@ -1,3 +1,7 @@
+.login-title {
+    font-size: 50px;
+}
+
 .admin-login {
     position: absolute;
     background: url('../../images/admin-login-background.jpg') no-repeat;
@@ -9,7 +13,7 @@
 }
 
 .login-form {
-    padding-top: 35px;
+    padding-top: 50px;
     padding-bottom: 25px;
     padding-left: 60px;
     padding-right: 60px;
@@ -18,3 +22,33 @@
     -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
     box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
 }
+
+
+.button_1 {
+    background-color: #1ab4be;
+    display: inline-block;
+    padding: 10px 60px;
+    margin: 10px;
+    font-size: 20px;
+    font-family: 'arial';
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #33d3df;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .button_1:hover {
+    background-color: #f2f8f1;
+    color: #1ab4be;
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+            box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+  }
+  
+  .button_1:active {
+    background-color: #1ab4be;
+    color: #fff;
+    -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+            box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+  }
