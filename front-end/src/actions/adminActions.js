@@ -39,6 +39,8 @@ export const getAdmin = (adminInfo) => {
 
 
 export const logoutAdmin = () => (dispatch) => {
+    // Clear Errors
+    dispatch(clearErrors());
     // remove the token from the local storage
     localStorage.removeItem('jwtToken');
     // delete the authorization header
@@ -46,3 +48,11 @@ export const logoutAdmin = () => (dispatch) => {
     // remove the admin by setting isAuthenticated to false by sending an empty payload
     dispatch(getAdmin({}));
 };
+
+
+export const clearErrors = () => {
+    return {
+        type: GET_ERRORS,
+        payload: {}
+    };
+}
