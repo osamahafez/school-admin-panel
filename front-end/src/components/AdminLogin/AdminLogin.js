@@ -77,9 +77,8 @@ class AdminLogin extends Component {
                                             <div className="input-group-prepend">
                                                 <div className="input-group-text"> <i className="fas fa-user fa-lg"></i> </div>
                                             </div>
-                                            <input type="text" name='username' className={classnames('form-control form-control-lg', {'is-invalid': errors.notFound})} placeholder="Username: admin" onChange={this.onChangeHandler} />
+                                            <input type="text" name='username' className={classnames('form-control form-control-lg', {'is-invalid': errors.loginError})} placeholder="Username: admin" onChange={this.onChangeHandler} />
                                             <div className="invalid-feedback">
-                                               <strong>{errors.notFound}</strong>
                                             </div>
                                         </div>
                                     </div>
@@ -89,9 +88,9 @@ class AdminLogin extends Component {
                                             <div className="input-group-prepend">
                                                 <div className="input-group-text"><i className="fas fa-lock fa-lg"></i></div>
                                             </div>
-                                            <input type="password" name='password' className={classnames('form-control form-control-lg', {'is-invalid': errors.passwordNotCorrect})} placeholder="Password: admin" onChange={this.onChangeHandler} />
+                                            <input type="password" name='password' className={classnames('form-control form-control-lg', {'is-invalid': errors.loginError})} placeholder="Password: admin" onChange={this.onChangeHandler} />
                                             <div className="invalid-feedback">
-                                                <strong>{errors.passwordNotCorrect}</strong>
+                                                <strong>{errors.loginError}</strong>
                                             </div>
                                         </div>
                                     </div>

@@ -19,7 +19,7 @@ router.post('/login', (req, res) => {
         .then((result) => {
             if(result === null) { 
                 // username not found
-                return res.status(404).json({notFound: 'Username doesn\'t exsist'});
+                return res.status(404).json({loginError: 'Credentials not correct'});
             }
             else {
                 if(adminsData.password === result.password) {
@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
 
                 } else {
                     // password not correct
-                    return res.status(400).json({passwordNotCorrect: 'Password is not correct'});
+                    return res.status(400).json({loginError: 'Credentials not correct'});
                 }
             }
         })
