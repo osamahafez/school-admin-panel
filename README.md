@@ -6,6 +6,6 @@ project on Heroku: https://school-admin-panel.herokuapp.com/
 
 ### Admin Login: 
 
-username: osamahafez
+username: admin
 
-password: 123456
+password: admin
