@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SidebarTemplate from '../common/SidebarTemplate/SidebarTemplate';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getStudent, updateStudent, clearErrors } from '../../actions/studentActions'; 
@@ -122,6 +123,9 @@ class UpdateStudent extends Component {
         return (
             <SidebarTemplate>
                 
+                <button className="btn btn-dark btn-sm mt-2" onClick={this.props.history.goBack}>
+                    <i className="fas fa-arrow-left"></i> Back
+                </button>
                 <h1 className='text-center display-4'>Update Student</h1>
                 
                 <form className='mb-4' onSubmit={this.submitStudent}>
@@ -308,4 +312,4 @@ const mapStateToProps = (state) => ({
     student: state.student
 });
 
-export default connect(mapStateToProps, { getStudent, updateStudent, clearErrors })(UpdateStudent);
+export default connect(mapStateToProps, { getStudent, updateStudent, clearErrors })(withRouter(UpdateStudent));
