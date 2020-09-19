@@ -50,7 +50,9 @@ class SidebarTemplate extends Component {
                 {/* Page Content */}
                 <div id="page-content-wrapper">
                     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                        <button className="btn btn-light" onClick={this.minimizeSidebar}> {this.state.toggled ? <i className='fas fa-arrow-right fa-lg'></i> : <i className='fas fa-arrow-left fa-lg'></i>} </button>
+                        <button className="btn btn-light" onClick={this.minimizeSidebar} data-toggle="tooltip" data-placement="right" title="Tooltip on right"> 
+                            {this.state.toggled ? <i className="fas fa-expand-alt fa-lg"></i> : <i className="fas fa-compress-alt fa-lg"></i>} 
+                        </button>
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
