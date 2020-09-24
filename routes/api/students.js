@@ -3,7 +3,7 @@ const router = express.Router()
 const Student = require('../../models/Student');
 const validateStudentInputs = require('../../validation/students');
 const passport = require('passport');
-const FilterSearch = require('../../validation/FilterSearch');
+const filterSearch = require('../../validation/filterSearch');
 
 /*
 @req: post
@@ -22,7 +22,7 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
     const studentData = {};
     studentData.full_name = req.body.full_name;
     studentData.birth_date = req.body.birth_date;
-    studentData.location = req.body.location;
+    studentData.address = req.body.address;
     studentData.stage = req.body.stage;
     studentData.level = req.body.level;
     studentData.parent_info = req.body.parent_info;
@@ -41,8 +41,7 @@ router.post('/create', passport.authenticate('jwt', {session: false}), (req, res
 @access: private
 */
 router.post('/search', passport.authenticate('jwt', {session:false}), (req, res) => {
-    
-    const filteredSearchInput = FilterSearch(req.body);
+    const filteredSearchInput = filterSearch(req.body);
 
     Student.find(filteredSearchInput)
         .then(result => {
@@ -81,7 +80,7 @@ router.put('/:student_id', passport.authenticate('jwt', {session: false}), (req,
     const studentData = {};
     studentData.full_name = req.body.full_name;
     studentData.birth_date = req.body.birth_date;
-    studentData.location = req.body.location;
+    studentData.address = req.body.address;
     studentData.stage = req.body.stage;
     studentData.level = req.body.level;
     studentData.parent_info = req.body.parent_info;

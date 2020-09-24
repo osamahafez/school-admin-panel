@@ -12,7 +12,7 @@ class UpdateStudent extends Component {
     state = {
         full_name: '',
         birth_date: '',
-        location: '',
+        address: '',
         stage: '',
         level: '',
         parent_name: '',
@@ -34,13 +34,13 @@ class UpdateStudent extends Component {
     UNSAFE_componentWillReceiveProps(nextProps) {
         if(nextProps.student.student) {
             const { student } = nextProps.student;
-            student.location = IsEmpty(student.location)? '' : student.location; 
+            student.address = IsEmpty(student.address)? '' : student.address; 
             student.parent_info.email = IsEmpty(student.parent_info.email)? '' : student.parent_info.email;
         
             this.setState({
                 full_name: student.full_name,
                 birth_date: student.birth_date,
-                location: student.location,
+                address: student.address,
                 stage: student.stage,
                 level: student.level,
                 parent_name: student.parent_info.full_name,
@@ -61,7 +61,7 @@ class UpdateStudent extends Component {
         const studentData = {
             full_name: this.state.full_name,
             birth_date: this.state.birth_date,
-            location: this.state.location,
+            address: this.state.address,
             stage: this.state.stage,
             level: this.state.level,
             parent_info: {
@@ -166,14 +166,14 @@ class UpdateStudent extends Component {
                     </div>
 
                     <div className='form-group'>
-                        <label htmlFor='location'>Location</label>
+                        <label htmlFor='address'>Address</label>
                         <input
                             type='text'
-                            name='location'
-                            value={this.state.location}
+                            name='address'
+                            value={this.state.address}
                             className='form-control'
-                            id='location'
-                            placeholder='Enter current household'
+                            id='address'
+                            placeholder='Enter current household address'
                             onChange={this.onChangeHandler}
                         />
                     </div>

@@ -8,7 +8,7 @@ class AddStudent extends Component {
     state = {
         full_name: '',
         birth_date: '',
-        location: '',
+        address: '',
         stage: '',
         level: '',
         parent_name: '',
@@ -37,7 +37,7 @@ class AddStudent extends Component {
         const studentData = {
             full_name: this.state.full_name,
             birth_date: this.state.birth_date,
-            location: this.state.location,
+            address: this.state.address,
             stage: this.state.stage,
             level: this.state.level,
             parent_info: {
@@ -139,13 +139,13 @@ class AddStudent extends Component {
                     </div>
 
                     <div className='form-group'>
-                        <label htmlFor='location'>Location</label>
+                        <label htmlFor='address'>Address</label>
                         <input
                             type='text'
-                            name='location'
+                            name='address'
                             className='form-control'
-                            id='location'
-                            placeholder='Enter current household'
+                            id='address'
+                            placeholder='Enter current household address'
                             onChange={this.onChangeHandler}
                         />
                     </div>

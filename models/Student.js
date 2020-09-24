@@ -13,7 +13,7 @@ const studentSchema = new Schema({
         required: true
     },
     
-    location: {
+    address: {
         type: String
     },
     

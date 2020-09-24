@@ -10,7 +10,7 @@ class Search extends Component {
     state = {
         full_name: '',
         birth_date: '',
-        location: '',
+        address: '',
         stage: '',
         level: '',
         parent_name: '',
@@ -39,7 +39,7 @@ class Search extends Component {
 
         if(this.state.full_name) searchData.full_name = this.state.full_name;
         if(this.state.birth_date) searchData.birth_date = this.state.birth_date;
-        if(this.state.location) searchData.location = this.state.location;
+        if(this.state.address) searchData.address = this.state.address;
         if(this.state.stage) searchData.stage = this.state.stage;
         if(this.state.level) searchData.level = this.state.level;
         if(this.state.parent_name || this.state.phone || this.state.national_id) searchData.parent_info = {};
@@ -153,12 +153,12 @@ class Search extends Component {
                         </div>
 
                         <div className='form-group col-md-6'>
-                            <label htmlFor='location'>Location</label>
+                            <label htmlFor='address'>Address</label>
                             <input
                                 type='text'
                                 className='form-control'
-                                id='location'
-                                name='location'
+                                id='address'
+                                name='address'
                                 onChange={this.onChangeHandler}
                             />
                         </div>
