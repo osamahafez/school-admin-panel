@@ -5,6 +5,8 @@ const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 const admins = require('./routes/api/admins');
 const students = require('./routes/api/students');
+const Admin = require('./models/Admin');
+const bcrypt = require('bcrypt');
 
 // mongoose connection
 const mongoose = require('mongoose');
